@@ -33,7 +33,7 @@ class JRegistry
 }
 
 // Create a sample model.
-$modelFactory = new JModelFactory(
+$model = JModelFactory::create(
 	new JCommandChain,
 	new JModelDatabase(new JDatabase, 'articles'),
 	array(
@@ -42,12 +42,14 @@ $modelFactory = new JModelFactory(
 	)
 );
 
-print_r($modelFactory->getModel());
+print_r($model);
 
 // Try calling the read method.
 class JSomething extends JRegistry {}
 $params = new JSomething;
 $params->set('a', 1);
 $params->set('b', 2);
-$modelFactory->getModel()->read($params);
+print_r($params);
+$model->read($params);
+
 
